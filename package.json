@@ -23,6 +23,7 @@
     "jalaali-js": "1.2.8",
     "react": "19.1.1",
     "react-dom": "19.1.1",
+    "react-router-dom": "7.9.1",
     "stylis": "4.3.6"
   },
   "devDependencies": {
