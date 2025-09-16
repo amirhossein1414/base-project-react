@@ -40,6 +40,6 @@
 /* Center form/page area */
 .page-content {
   flex: 1;
-  padding: 2rem;
+  padding-inline: 1rem;
   background: #f9f9f9;  /* example background */
 }

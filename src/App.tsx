@@ -1,21 +1,6 @@
-/* 
-import './App.css';
-
-function App() {
-
-  return (
-    <>
-      <div>
-      </div>
-    </>
-  )
-}
-
-export default App */
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/home/Home";
+import StepperExample from "./pages/stepper/stepper";
 
 export default function App() {
   return (
@@ -32,10 +17,11 @@ export default function App() {
             <img src="/menu/side.png" alt="Side menu" className="side-menu-img" />
           </aside>
 
-          <section className="page-content">
+          <section className="page-content" style={{ direction: 'rtl' }}>
             <Routes>
-              <Route path="/" element={<Home />} />
-            {/* Add more routes here */}
+              <Route path="/" element={<StepperExample />} />
+              <Route path="/step3" element={<StepperExample />} />
+              {/* Add more routes here */}
             </Routes>
           </section>
         </main>
