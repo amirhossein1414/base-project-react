@@ -2,3 +2,7 @@
     font-family: 'iransans' !important;
     padding-inline: 5px;
 }
+
+.MuiInputBase-input {
+    font-family: 'iransans' !important;
+}

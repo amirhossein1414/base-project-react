@@ -42,6 +42,12 @@ export default function Step3() {
                 control={control}
                 render={({ field, fieldState }) => (
                     <TextField
+                        InputProps={{
+                            style: { fontFamily: 'iransans', fontSize: 18 },
+                        }}
+                        InputLabelProps={{
+                            style: { fontFamily: 'iransans' },
+                        }}
                         {...field}
                         label="نام"
                         fullWidth
@@ -59,6 +65,12 @@ export default function Step3() {
                 control={control}
                 render={({ field, fieldState }) => (
                     <TextField
+                        InputProps={{
+                            style: { fontFamily: 'iransans', fontSize: 18 },
+                        }}
+                        InputLabelProps={{
+                            style: { fontFamily: 'iransans' },
+                        }}
                         {...field}
                         label="ایمیل"
                         fullWidth
@@ -76,6 +88,12 @@ export default function Step3() {
                 control={control}
                 render={({ field, fieldState }) => (
                     <TextField
+                        InputProps={{
+                            style: { fontFamily: 'iransans', fontSize: 18 },
+                        }}
+                        InputLabelProps={{
+                            style: { fontFamily: 'iransans' },
+                        }}
                         {...field}
                         select
                         label="کشور"
@@ -92,7 +110,7 @@ export default function Step3() {
                 )}
             />
 
-            <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
+            <Button type="submit" variant="contained" fullWidth sx={{ mt: 2, width: '15rem' }}>
                 ارسال
             </Button>
         </Box>

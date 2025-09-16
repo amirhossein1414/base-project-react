@@ -13,7 +13,8 @@
 
 .top-bar-img {
   width: 100%;
-  height: auto;   /* keep aspect ratio */
+  height: auto;
+  /* keep aspect ratio */
   display: block;
 }
 
@@ -21,12 +22,14 @@
 .content-area {
   flex: 1;
   display: flex;
-  flex-direction: row-reverse; /* because rtl: side menu stays on right */
+  flex-direction: row-reverse;
+  /* because rtl: side menu stays on right */
 }
 
 /* Right side menu */
 .side-menu {
-  width: 220px;         /* adjust to your image width */
+  width: 257px;
+  /* adjust to your image width */
   flex-shrink: 0;
   background-color: transparent;
 }
@@ -41,5 +44,6 @@
 .page-content {
   flex: 1;
   padding-inline: 1rem;
-  background: #f9f9f9;  /* example background */
+  background: #f9f9f9;
+  /* example background */
 }
