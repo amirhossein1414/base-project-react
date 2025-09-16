@@ -34,7 +34,7 @@ export default function Step3() {
         <Box
             component="form"
             onSubmit={handleSubmit(onSubmit)}
-            sx={{ maxWidth: 400, mx: "auto", mt: 4 }}
+            sx={{ width: '100%', mx: "auto", mt: 4 }}
         >
             {/* Name */}
             <Controller
@@ -48,6 +48,7 @@ export default function Step3() {
                         margin="normal"
                         error={!!fieldState.error}
                         helperText={fieldState.error?.message}
+                        style={{ width: '25rem' }}
                     />
                 )}
             />
@@ -64,6 +65,7 @@ export default function Step3() {
                         margin="normal"
                         error={!!fieldState.error}
                         helperText={fieldState.error?.message}
+                        style={{ width: '25rem' }}
                     />
                 )}
             />
@@ -81,6 +83,7 @@ export default function Step3() {
                         margin="normal"
                         error={!!fieldState.error}
                         helperText={fieldState.error?.message}
+                        style={{ width: '25rem' }}
                     >
                         <MenuItem value="IR">ایران</MenuItem>
                         <MenuItem value="US">آمریکا</MenuItem>
