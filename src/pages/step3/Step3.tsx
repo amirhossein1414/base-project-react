@@ -4,7 +4,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Typography } from '@mui/material';
 import { FormSelect } from '../../components/FormSelect/FormSelect';
 import { WideForm } from '../../components/WideForm/WideForm';
-import { appLoader } from '../../components/GlobalLoader/GlobalLoader';
 
 const schema = z.object({
     fromPlace: z.string().nonempty('تعیین محل الزامی است'),
@@ -26,15 +25,15 @@ export default function Step3() {
 
     return (
         <>
-            <Typography variant="h6" sx={{ fontFamily: 'iransans', mb: 2 }}>
-                اطلاعات مصوبه
-            </Typography>
 
             <WideForm onSubmit={onSubmit}>
+                <Typography variant="h6" sx={{ fontFamily: 'iransans' }}>
+                    اطلاعات مصوبه
+                </Typography>
                 <FormSelect
                     name="fromPlace"
                     control={control}
-                    label="از محل"
+                    label="از محل *"
                     options={[
                         { value: 'D', label: 'عادی/موردی' },
                         { value: 'E', label: 'از محل حد/ سقف' },

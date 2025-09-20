@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import StepperExample from "./pages/stepper/stepper";
+import StepperExample from "./pages/Stepper/stepper";
 
 export default function App() {
   return (

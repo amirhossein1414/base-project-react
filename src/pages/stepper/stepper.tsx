@@ -6,7 +6,7 @@ import {
     StepLabel
 } from "@mui/material";
 import type { StepIconProps } from "@mui/material";
-import Step3 from "../step3/Step3";
+import Step3 from "../Step3/Step3";
 import LayersOutlinedIcon from "@mui/icons-material/LayersOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
