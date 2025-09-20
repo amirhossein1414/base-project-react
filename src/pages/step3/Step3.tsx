@@ -1,12 +1,12 @@
-
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Box, Typography } from "@mui/material";
-import { FormSelect } from "../../components/FormSelect/FormSelect";
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Typography } from '@mui/material';
+import { FormSelect } from '../../components/FormSelect/FormSelect';
+import { WideForm } from '../../components/WideForm/WideForm';
 
 const schema = z.object({
-    fromPlace: z.string().nonempty("از محل"),
+    fromPlace: z.string().nonempty('از محل الزامی است'),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -14,43 +14,39 @@ type FormValues = z.infer<typeof schema>;
 export default function Step3() {
     const { handleSubmit, control, reset, watch } = useForm<FormValues>({
         resolver: zodResolver(schema),
-        defaultValues: { fromPlace: "" },
+        defaultValues: { fromPlace: '' },
+        mode: 'onTouched',
     });
 
-    const formData = watch(); // گرفتن کل فرم realtime
-
-    const onSubmit = (data: FormValues) => {
-        console.log("Form Data:", data);
+    const onSubmit = handleSubmit((data) => {
+        console.log('Form Data:', data);
         reset();
-    };
+    });
 
     return (
         <>
-            <Typography variant="h6" sx={{ fontFamily: "iransans", mb: 2 }}>
+            <Typography variant="h6" sx={{ fontFamily: 'iransans', mb: 2 }}>
                 اطلاعات مصوبه
             </Typography>
 
-            <Box
-                component="form"
-                onSubmit={handleSubmit(onSubmit)}
-                sx={{ width: "100%", mx: "auto", mt: 4, display: "flex", flexDirection: "column", gap: "1.5rem" }}
-            >
+            <WideForm onSubmit={onSubmit}>
                 <FormSelect
                     name="fromPlace"
                     control={control}
                     label="از محل"
+                    width="35rem" // عرض پیش فرض
                     options={[
-                        { value: "D", label: "عادی/موردی" },
-                        { value: "E", label: "از محل حد/ سقف" },
-                        { value: "F", label: "از محل گروهی/ تفاهم نامه‌ای" },
-                        { value: "G", label: "از محل قرض الحسنه ویژه" },
-                        { value: "H", label: "از محل تبصره ای" },
-                        { value: "A", label: "از محل تکلیفی" },
-                        { value: "B", label: "مصوبات خاص" },
-                        { value: "C", label: "از محل وجوه اداره شده" },
+                        { value: 'D', label: 'عادی/موردی' },
+                        { value: 'E', label: 'از محل حد/ سقف' },
+                        { value: 'F', label: 'از محل گروهی/ تفاهم نامه‌ای' },
+                        { value: 'G', label: 'از محل قرض الحسنه ویژه' },
+                        { value: 'H', label: 'از محل تبصره ای' },
+                        { value: 'A', label: 'از محل تکلیفی' },
+                        { value: 'B', label: 'مصوبات خاص' },
+                        { value: 'C', label: 'از محل وجوه اداره شده' },
                     ]}
                 />
-            </Box>
+            </WideForm>
         </>
     );
 }
