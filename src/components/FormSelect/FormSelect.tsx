@@ -10,8 +10,6 @@ interface FormSelectProps<T extends FieldValues> {
     control: Control<T>;
     label: string;
     options: { value: string; label: string }[];
-    width?: string | number;
-    maxWidth?: string | number;
     textFieldProps?: TextFieldProps;
 }
 
@@ -20,8 +18,6 @@ export function FormSelect<T extends FieldValues>({
     control,
     label,
     options,
-    maxWidth,
-    width,
     textFieldProps,
 }: FormSelectProps<T>) {
     return (
@@ -38,8 +34,7 @@ export function FormSelect<T extends FieldValues>({
                     error={!!fieldState.error}
                     helperText={fieldState.error?.message}
                     sx={{
-                        width: width ?? '35rem',
-                        maxWidth: maxWidth ?? '35rem',
+                        width: '100%',
                         fontFamily: "iransans",
                         ...textFieldProps?.sx,
                     }}
