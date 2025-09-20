@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
     Box,
     Stepper,
@@ -19,17 +19,13 @@ const steps = [
     "تایید اطلاعات درخواست"
 ];
 
-// 🔹 کامپوننت سفارشی برای آیکن استپ
 const CustomStepIcon: React.FC<StepIconProps & { activeStep: number }> = (props) => {
     const { active, completed, icon, activeStep } = props;
 
-    // اگر استپ فعلی استپ فعال باشد، آیکن Edit نشان بده
     if (active) return <EditIcon style={{ color: "#59815c" }} />;
 
-    // اگر استپ تکمیل شده، تیک نمایش بده
     if (completed) return <CheckCircleIcon style={{ color: "#59815c" }} />;
 
-    // استپ بعدی یا ناتمام: می‌توان شماره یا آیکن خالی گذاشت
     return <RadioButtonUncheckedIcon style={{ color: "#59815c" }}></RadioButtonUncheckedIcon>;
 };
 
@@ -40,6 +36,28 @@ export default function StepperExample() {
         setActiveStep(step);
     };
 
+    const stepperRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!stepperRef.current) return;
+
+        stepperRef.current.querySelectorAll('.mui-active-step').forEach(el => {
+            el.classList.remove('mui-active-step');
+        });
+
+        const activeIconContainers = stepperRef.current.querySelectorAll(
+            '.MuiStepLabel-iconContainer.Mui-active'
+        );
+
+        const firstActive = Array.from(activeIconContainers).length > 0 ? activeIconContainers[0] as HTMLElement : undefined;
+        if (firstActive === undefined) {
+            return;
+        }
+
+        (firstActive?.parentNode?.parentNode as HTMLElement).classList.add('mui-active-step');
+
+    }, [activeStep]);
+
     return (
         <div style={{ width: "100%" }}>
             <span style={{ display: "flex", alignItems: "center", gap: "5px" }}>
@@ -49,7 +67,7 @@ export default function StepperExample() {
                 </h3>
             </span>
 
-            <Stepper nonLinear activeStep={activeStep}>
+            <Stepper ref={stepperRef} nonLinear activeStep={activeStep}>
                 {steps.map((label, index) => (
                     <Step key={label} className="iransans" completed={index < activeStep}>
                         <StepLabel

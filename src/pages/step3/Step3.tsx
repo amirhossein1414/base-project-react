@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Typography } from '@mui/material';
 import { FormSelect } from '../../components/FormSelect/FormSelect';
 import { WideForm } from '../../components/WideForm/WideForm';
 import { fromPlaceOptions } from './Step3.data';
@@ -27,10 +26,7 @@ export default function Step3() {
 
     return (
         <>
-            <Typography variant="h6" sx={{ fontFamily: 'iransans', mb: 1 }}>
-                اطلاعات مصوبه
-            </Typography>
-            <WideForm onSubmit={onSubmit}>
+            <WideForm onSubmit={onSubmit} title='اطلاعات مصوبه'>
                 <FormSelect
                     name="fromPlace"
                     control={control}
@@ -41,6 +37,95 @@ export default function Step3() {
                     name="mosavabe"
                     control={control}
                     label="مصوبه *"
+                    options={fromPlaceOptions}
+                />
+            </WideForm>
+
+            <WideForm onSubmit={onSubmit} title='اطلاعات اقتصادی'>
+                <FormSelect
+                    name="fromPlace"
+                    control={control}
+                    label="بخش اقتصادی اصلی *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="بخش اقتصادی آیسیک *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="زیر بخش اقتصادی آیسیک *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="منبع تامین مالی *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="نوع عقد *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="نوع محصول *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="هدف تسهیلات *"
+                    options={fromPlaceOptions}
+                />
+            </WideForm>
+            <WideForm onSubmit={onSubmit} title='اطلاعات درخواست'>
+                <FormSelect
+                    name="fromPlace"
+                    control={control}
+                    label="بخش اقتصادی اصلی *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="بخش اقتصادی آیسیک *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="زیر بخش اقتصادی آیسیک *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="منبع تامین مالی *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="نوع عقد *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="نوع محصول *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="هدف تسهیلات *"
                     options={fromPlaceOptions}
                 />
             </WideForm>
