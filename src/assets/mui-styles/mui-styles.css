@@ -6,3 +6,7 @@
 .MuiInputBase-input {
     font-family: 'iransans' !important;
 }
+
+.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root {
+    font-family: 'iransans';
+}
