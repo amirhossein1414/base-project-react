@@ -34,6 +34,7 @@
 
 .page-content {
   flex: 1;
+  padding-right: 20px;
   max-width: calc(100% - 296px);
   background: #f9f9f9;
 }

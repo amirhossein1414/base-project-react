@@ -41,7 +41,7 @@ export default function Step3() {
                 />
             </WideForm>
 
-            <WideForm onSubmit={onSubmit} title='اطلاعات اقتصادی'>
+            {/* <WideForm onSubmit={onSubmit} title='اطلاعات اقتصادی'>
                 <FormSelect
                     name="fromPlace"
                     control={control}
@@ -128,7 +128,7 @@ export default function Step3() {
                     label="هدف تسهیلات *"
                     options={fromPlaceOptions}
                 />
-            </WideForm>
+            </WideForm> */}
         </>
     );
 }
