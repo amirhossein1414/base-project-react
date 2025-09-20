@@ -26,9 +26,9 @@ export function WideForm({ onSubmit, children }: WideFormProps) {
         >
           {children}
           {/* دکمه submit مشترک */}
-          <Button type="submit" variant="contained" sx={{ width: '15rem', mt: 2 }}>
+          {/* <Button type="submit" variant="contained" sx={{ width: '15rem', mt: 2 }}>
             ارسال
-          </Button>
+          </Button> */}
         </Box>
       </ThemeProvider>
     </CacheProvider>
