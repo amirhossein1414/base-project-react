@@ -42,7 +42,7 @@ export function FormSelect<T extends FieldValues>({
                                 error={!!fieldState.error}
                                 helperText={fieldState.error?.message}
                                 sx={{
-                                    width: width ?? "25rem",
+                                    width: width ?? "35rem",
                                     fontFamily: "iransans",
                                     ...textFieldProps?.sx,
                                 }}
