@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Typography } from '@mui/material';
 import { FormSelect } from '../../components/FormSelect/FormSelect';
 import { WideForm } from '../../components/WideForm/WideForm';
+import { appLoader } from '../../components/GlobalLoader/GlobalLoader';
 
 const schema = z.object({
     fromPlace: z.string().nonempty('تعیین محل الزامی است'),

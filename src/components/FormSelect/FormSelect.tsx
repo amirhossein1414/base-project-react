@@ -4,7 +4,6 @@ import { TextField, MenuItem } from "@mui/material";
 import type { TextFieldProps } from "@mui/material";
 import type { Control, FieldValues, Path } from "react-hook-form";
 import { CacheProvider } from '@emotion/react';
-import { ThemeProvider, } from '@mui/material/styles';
 import { appCacheRtl, appTheme } from "../Theme";
 
 
@@ -26,64 +25,57 @@ export function FormSelect<T extends FieldValues>({
     textFieldProps,
 }: FormSelectProps<T>) {
     return (
-        <CacheProvider value={appCacheRtl}>
-            <ThemeProvider theme={appTheme}>
-                <div dir="rtl">
-                    <Controller
-                        name={name}
-                        control={control}
-                        render={({ field, fieldState }) => (
-                            <TextField
-                                {...field}
-                                select
-                                label={label}
-                                fullWidth
-                                margin="normal"
-                                error={!!fieldState.error}
-                                helperText={fieldState.error?.message}
-                                sx={{
-                                    width: width ?? "35rem",
+        <Controller
+            name={name}
+            control={control}
+            render={({ field, fieldState }) => (
+                <TextField
+                    {...field}
+                    select
+                    label={label}
+                    fullWidth
+                    margin="normal"
+                    error={!!fieldState.error}
+                    helperText={fieldState.error?.message}
+                    sx={{
+                        width: width ?? "35rem",
+                        fontFamily: "iransans",
+                        ...textFieldProps?.sx,
+                    }}
+                    SelectProps={{
+                        sx: {
+                            fontFamily: "iransans",
+                            fontSize: 18,
+                            direction: "rtl",
+                            textAlign: "right",
+                        },
+                        MenuProps: {
+                            PaperProps: {
+                                sx: {
                                     fontFamily: "iransans",
-                                    ...textFieldProps?.sx,
-                                }}
-                                SelectProps={{
-                                    sx: {
-                                        fontFamily: "iransans",
-                                        fontSize: 18,
-                                        direction: "rtl",
-                                        textAlign: "right",
-                                    },
-                                    MenuProps: {
-                                        PaperProps: {
-                                            sx: {
-                                                fontFamily: "iransans",
-                                                direction: "rtl",
-                                                textAlign: "right",
-                                            },
-                                        },
-                                    },
-                                }}
-                                InputProps={{
-                                    sx: { fontFamily: "iransans", fontSize: 18 },
-                                    ...(textFieldProps?.InputProps ?? {}),
-                                }}
-                                InputLabelProps={{
-                                    sx: { fontFamily: "iransans" },
-                                    ...(textFieldProps?.InputLabelProps ?? {}),
-                                }}
-                                {...textFieldProps}
-                            >
-                                {options.map((opt) => (
-                                    <MenuItem key={opt.value} value={opt.value}>
-                                        {opt.label}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
-                        )}
-                    />
-                </div>
-            </ThemeProvider>
-        </CacheProvider>
-
+                                    direction: "rtl",
+                                    textAlign: "right",
+                                },
+                            },
+                        },
+                    }}
+                    InputProps={{
+                        sx: { fontFamily: "iransans", fontSize: 18 },
+                        ...(textFieldProps?.InputProps ?? {}),
+                    }}
+                    InputLabelProps={{
+                        sx: { fontFamily: "iransans" },
+                        ...(textFieldProps?.InputLabelProps ?? {}),
+                    }}
+                    {...textFieldProps}
+                >
+                    {options.map((opt) => (
+                        <MenuItem key={opt.value} value={opt.value}>
+                            {opt.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
+            )}
+        />
     );
 }

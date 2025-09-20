@@ -6,6 +6,9 @@ import createCache from '@emotion/cache';
 export const appTheme = () =>
     createTheme({
         direction: 'rtl',
+        palette: {
+            mode: 'light',
+        },
     });
 
 export const appCacheRtl = createCache({
