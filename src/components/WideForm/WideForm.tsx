@@ -23,9 +23,9 @@ export function WideForm({ onSubmit, children, title }: WideFormProps) {
             onSubmit={onSubmit}
             sx={{
               display: 'flex',
-              flexDirection: 'column',
               gap: '1.5rem',
               width: '100%',
+              maxWidth: '100%',
               mx: 'auto',
               mb: 2
             }}
