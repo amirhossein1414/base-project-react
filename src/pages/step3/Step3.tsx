@@ -6,7 +6,7 @@ import { FormSelect } from '../../components/FormSelect/FormSelect';
 import { WideForm } from '../../components/WideForm/WideForm';
 
 const schema = z.object({
-    fromPlace: z.string().nonempty('از محل الزامی است'),
+    fromPlace: z.string().nonempty('تعیین محل الزامی است'),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -34,7 +34,6 @@ export default function Step3() {
                     name="fromPlace"
                     control={control}
                     label="از محل"
-                    width="35rem" // عرض پیش فرض
                     options={[
                         { value: 'D', label: 'عادی/موردی' },
                         { value: 'E', label: 'از محل حد/ سقف' },

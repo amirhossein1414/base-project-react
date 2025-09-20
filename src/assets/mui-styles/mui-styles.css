@@ -10,3 +10,8 @@
 .MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root {
     font-family: 'iransans';
 }
+
+.MuiFormHelperText-root.Mui-error {
+    font-family: 'iransans';
+    font-size: 16px;
+}
