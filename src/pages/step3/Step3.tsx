@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Typography } from '@mui/material';
 import { FormSelect } from '../../components/FormSelect/FormSelect';
 import { WideForm } from '../../components/WideForm/WideForm';
+import { fromPlaceOptions } from './Step3.data';
 
 const schema = z.object({
     fromPlace: z.string().nonempty('تعیین محل الزامی است'),
@@ -34,16 +35,7 @@ export default function Step3() {
                     name="fromPlace"
                     control={control}
                     label="از محل *"
-                    options={[
-                        { value: 'D', label: 'عادی/موردی' },
-                        { value: 'E', label: 'از محل حد/ سقف' },
-                        { value: 'F', label: 'از محل گروهی/ تفاهم نامه‌ای' },
-                        { value: 'G', label: 'از محل قرض الحسنه ویژه' },
-                        { value: 'H', label: 'از محل تبصره ای' },
-                        { value: 'A', label: 'از محل تکلیفی' },
-                        { value: 'B', label: 'مصوبات خاص' },
-                        { value: 'C', label: 'از محل وجوه اداره شده' },
-                    ]}
+                    options={fromPlaceOptions}
                 />
             </WideForm>
         </>
