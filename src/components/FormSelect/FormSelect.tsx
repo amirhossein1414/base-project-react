@@ -3,8 +3,6 @@ import { Controller, } from "react-hook-form";
 import { TextField, MenuItem } from "@mui/material";
 import type { TextFieldProps } from "@mui/material";
 import type { Control, FieldValues, Path } from "react-hook-form";
-import { CacheProvider } from '@emotion/react';
-import { appCacheRtl, appTheme } from "../Theme";
 
 
 interface FormSelectProps<T extends FieldValues> {
@@ -12,7 +10,7 @@ interface FormSelectProps<T extends FieldValues> {
     control: Control<T>;
     label: string;
     options: { value: string; label: string }[];
-    width?: string | number;
+    maxWidth?: string | number;
     textFieldProps?: TextFieldProps;
 }
 
@@ -21,7 +19,7 @@ export function FormSelect<T extends FieldValues>({
     control,
     label,
     options,
-    width,
+    maxWidth,
     textFieldProps,
 }: FormSelectProps<T>) {
     return (
@@ -38,7 +36,8 @@ export function FormSelect<T extends FieldValues>({
                     error={!!fieldState.error}
                     helperText={fieldState.error?.message}
                     sx={{
-                        width: width ?? "35rem",
+                        width: '100%',
+                        maxWidth: maxWidth ?? '35rem',
                         fontFamily: "iransans",
                         ...textFieldProps?.sx,
                     }}

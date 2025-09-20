@@ -1,6 +1,6 @@
 import { CacheProvider } from '@emotion/react';
 import { ThemeProvider } from '@mui/material/styles';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import type { ReactNode } from 'react';
 import { appCacheRtl, appTheme } from '../Theme';
 
@@ -12,7 +12,7 @@ interface WideFormProps {
 export function WideForm({ onSubmit, children }: WideFormProps) {
   return (
     <CacheProvider value={appCacheRtl}>
-      <ThemeProvider theme={appTheme}>
+      <ThemeProvider theme={appTheme()}>
         <Box
           component="form"
           onSubmit={onSubmit}
@@ -25,10 +25,6 @@ export function WideForm({ onSubmit, children }: WideFormProps) {
           }}
         >
           {children}
-          {/* دکمه submit مشترک */}
-          {/* <Button type="submit" variant="contained" sx={{ width: '15rem', mt: 2 }}>
-            ارسال
-          </Button> */}
         </Box>
       </ThemeProvider>
     </CacheProvider>

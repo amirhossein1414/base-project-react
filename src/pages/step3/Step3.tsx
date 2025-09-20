@@ -8,6 +8,7 @@ import { fromPlaceOptions } from './Step3.data';
 
 const schema = z.object({
     fromPlace: z.string().nonempty('تعیین محل الزامی است'),
+    mosavabe: z.string().nonempty('تعیین مصوبه الزامی است'),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -26,15 +27,20 @@ export default function Step3() {
 
     return (
         <>
-
+            <Typography variant="h6" sx={{ fontFamily: 'iransans', mb: 1 }}>
+                اطلاعات مصوبه
+            </Typography>
             <WideForm onSubmit={onSubmit}>
-                <Typography variant="h6" sx={{ fontFamily: 'iransans' }}>
-                    اطلاعات مصوبه
-                </Typography>
                 <FormSelect
                     name="fromPlace"
                     control={control}
                     label="از محل *"
+                    options={fromPlaceOptions}
+                />
+                <FormSelect
+                    name="mosavabe"
+                    control={control}
+                    label="مصوبه *"
                     options={fromPlaceOptions}
                 />
             </WideForm>
