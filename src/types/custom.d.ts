@@ -1,0 +1,1 @@
+declare module 'stylis'; // import { prefixer } from 'stylis';
