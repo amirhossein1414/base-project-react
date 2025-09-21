@@ -1,36 +1,13 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+
 import { Select } from '../../Components/Select/Select';
 import { WideForm } from '../../Components/WideForm/WideForm';
 import { fromPlaceOptions, mainEcoPart } from './Step3.data';
-import { step3Schema, type Step3Model } from './Step3.state';
-import { step3Store } from './Step3.state';
-import { useEffect } from 'react';
+import { type Step3Model } from './Step3.state';
 
 export default function Step3() {
-    const { handleSubmit, control, reset, watch } = useForm<Step3Model>({
-        resolver: zodResolver(step3Schema),
-        defaultValues: { fromPlace: '', mosavabe: '', mainEcoPart: '' },
-        mode: 'onTouched',
-    });
-
-    const onSubmit = handleSubmit((data) => {
-        console.log('Form Data:', data);
-        reset();
-    });
-
-    const watchAllFields = watch(); // همه فیلدها را زیر نظر می‌گیریم
-    const { setField } = step3Store();
-
-    useEffect(() => {
-        Object.entries(watchAllFields).forEach(([key, value]) => {
-            setField(key as keyof typeof watchAllFields, value);
-        });
-    }, [watchAllFields, setField]);
-
     return (
         <>
-            <WideForm onSubmit={onSubmit} title='اطلاعات مصوبه'>
+            <WideForm<Step3Model> onSubmit={onSubmit} title='اطلاعات مصوبه'>
                 <Select
                     name="fromPlace"
                     control={control}

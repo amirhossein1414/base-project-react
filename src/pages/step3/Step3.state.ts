@@ -16,14 +16,14 @@ export interface Step3State {
     reset: () => void;
 };
 
-const initialState: Step3Model = {
+export const defaultValues: Step3Model = {
     fromPlace: '',
     mosavabe: '',
     mainEcoPart: ''
 };
 
 export const step3Store = create<Step3State>((set) => ({
-    data: initialState,
+    data: defaultValues,
     setField: (key, value) =>
         set((state) => ({
             data: {
@@ -31,5 +31,5 @@ export const step3Store = create<Step3State>((set) => ({
                 [key]: value,
             },
         })),
-    reset: () => set({ data: initialState }),
+    reset: () => set({ data: defaultValues }),
 }));

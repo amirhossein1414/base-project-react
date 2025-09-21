@@ -4,15 +4,53 @@ import type { ReactNode } from 'react';
 import { CacheProvider } from '@emotion/react';
 import { ThemeProvider } from '@mui/material/styles';
 import { appCacheRtl, appTheme } from '../Theme';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { step3Schema, step3Store, type Step3Model } from '../../pages/Step3/Step3.state';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import type { FieldValues } from "react-hook-form";
 
-interface WideFormProps {
+interface WideFormProps<T extends FieldValues> {
   title?: string;
-  onSubmit: () => void;
-  children: ReactNode;
+  onSubmit?: () => void;
+  children?: ReactNode;
+  formActions?: (formApi: {
+    handleSubmit?: Function;
+    control?: any;
+    reset?: Function;
+    watch?: Function;
+  }) => void;
+  defaultValues?: T
 }
 
-export function WideForm({ onSubmit, children, title }: WideFormProps) {
+export function WideForm<T extends FieldValues>({ onSubmit, children, title, formActions, defaultValues }: WideFormProps<T>) {
+
+  const { handleSubmit, control, reset, watch } = useForm<Step3Model>({
+    resolver: zodResolver(step3Schema),
+    defaultValues: defaultValues,
+    mode: 'onTouched',
+  });
+
+  const watchAllFields = watch();
+  const { setField } = step3Store();
+
+  useEffect(() => {
+    Object.entries(watchAllFields).forEach(([key, value]) => {
+      setField(key as keyof typeof watchAllFields, value);
+    });
+  }, [watchAllFields, setField]);
+
+  useEffect(() => {
+    if (formActions) {
+      formActions({ handleSubmit, control, reset, watch });
+    }
+  }, [formActions, handleSubmit, control, reset, watch]);
+
+  /* const onSubmit = handleSubmit((data) => {
+    console.log('Form Data:', data);
+    reset();
+  }); */
+
   const kids = React.Children.toArray(children);
 
   return (
