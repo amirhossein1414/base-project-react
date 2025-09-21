@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormSelect } from '../../components/FormSelect/FormSelect';
+import { Select } from '../../components/Select/Select';
 import { WideForm } from '../../components/WideForm/WideForm';
 import { fromPlaceOptions, mainEcoPart } from './Step3.data';
 import { step3Schema, type Step3Model } from './Step3.state';
@@ -31,13 +31,13 @@ export default function Step3() {
     return (
         <>
             <WideForm onSubmit={onSubmit} title='اطلاعات مصوبه'>
-                <FormSelect
+                <Select
                     name="fromPlace"
                     control={control}
                     label="از محل *"
                     options={fromPlaceOptions}
                 />
-                <FormSelect
+                <Select
                     name="mosavabe"
                     control={control}
                     label="مصوبه *"
@@ -46,13 +46,13 @@ export default function Step3() {
             </WideForm>
             <br />
             <WideForm onSubmit={onSubmit} title='اطلاعات اقتصادی'>
-                <FormSelect
+                <Select
                     name="mainEcoPart"
                     control={control}
                     label="بخش اقتصادی اصلی *"
                     options={mainEcoPart}
                 />
-                <FormSelect
+                <Select
                     name="mosavabe"
                     control={control}
                     label="بخش اقتصادی آیسیک *"

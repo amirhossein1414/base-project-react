@@ -4,26 +4,26 @@ import { TextField, MenuItem } from "@mui/material";
 import type { TextFieldProps } from "@mui/material";
 import type { Control, FieldValues, Path } from "react-hook-form";
 
-export interface FormSelectOption {
+export interface SelectOptionModel {
     value: string;
     label: string;
 }
 
-interface FormSelectProps<T extends FieldValues> {
+interface SelectProps<T extends FieldValues> {
     name: Path<T>;
     control: Control<T>;
     label: string;
-    options: FormSelectOption[];
+    options: SelectOptionModel[];
     textFieldProps?: TextFieldProps;
 }
 
-export function FormSelect<T extends FieldValues>({
+export function Select<T extends FieldValues>({
     name,
     control,
     label,
     options,
     textFieldProps,
-}: FormSelectProps<T>) {
+}: SelectProps<T>) {
     return (
         <Controller
             name={name}
