@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Select } from '../../components/Select/Select';
-import { WideForm } from '../../components/WideForm/WideForm';
+import { Select } from '../../Components/Select/Select';
+import { WideForm } from '../../Components/WideForm/WideForm';
 import { fromPlaceOptions, mainEcoPart } from './Step3.data';
 import { step3Schema, type Step3Model } from './Step3.state';
 import { step3Store } from './Step3.state';

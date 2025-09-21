@@ -1,4 +1,4 @@
-import type { SelectOptionModel } from "../../components/Select/Select";
+import type { SelectOptionModel } from "../../Components/Select/Select";
 
 export const fromPlaceOptions: SelectOptionModel[] = [
     { value: 'D', label: 'عادی/موردی' },
