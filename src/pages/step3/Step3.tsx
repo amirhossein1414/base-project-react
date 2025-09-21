@@ -1,21 +1,16 @@
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormSelect } from '../../components/FormSelect/FormSelect';
 import { WideForm } from '../../components/WideForm/WideForm';
-import { fromPlaceOptions } from './Step3.data';
-
-const schema = z.object({
-    fromPlace: z.string().nonempty('تعیین محل الزامی است'),
-    mosavabe: z.string().nonempty('تعیین مصوبه الزامی است'),
-});
-
-type FormValues = z.infer<typeof schema>;
+import { fromPlaceOptions, mainEcoPart } from './Step3.data';
+import { step3Schema, type Step3Model } from './Step3.state';
+import { step3Store } from './Step3.state';
+import { useEffect } from 'react';
 
 export default function Step3() {
-    const { handleSubmit, control, reset, watch } = useForm<FormValues>({
-        resolver: zodResolver(schema),
-        defaultValues: { fromPlace: '' },
+    const { handleSubmit, control, reset, watch } = useForm<Step3Model>({
+        resolver: zodResolver(step3Schema),
+        defaultValues: { fromPlace: '', mosavabe: '', mainEcoPart: '' },
         mode: 'onTouched',
     });
 
@@ -23,6 +18,15 @@ export default function Step3() {
         console.log('Form Data:', data);
         reset();
     });
+
+    const watchAllFields = watch(); // همه فیلدها را زیر نظر می‌گیریم
+    const { setField } = step3Store();
+
+    useEffect(() => {
+        Object.entries(watchAllFields).forEach(([key, value]) => {
+            setField(key as keyof typeof watchAllFields, value);
+        });
+    }, [watchAllFields, setField]);
 
     return (
         <>
@@ -40,13 +44,13 @@ export default function Step3() {
                     options={fromPlaceOptions}
                 />
             </WideForm>
-
-            {/* <WideForm onSubmit={onSubmit} title='اطلاعات اقتصادی'>
+            <br />
+            <WideForm onSubmit={onSubmit} title='اطلاعات اقتصادی'>
                 <FormSelect
-                    name="fromPlace"
+                    name="mainEcoPart"
                     control={control}
                     label="بخش اقتصادی اصلی *"
-                    options={fromPlaceOptions}
+                    options={mainEcoPart}
                 />
                 <FormSelect
                     name="mosavabe"
@@ -54,7 +58,7 @@ export default function Step3() {
                     label="بخش اقتصادی آیسیک *"
                     options={fromPlaceOptions}
                 />
-                <FormSelect
+                {/*<FormSelect
                     name="mosavabe"
                     control={control}
                     label="زیر بخش اقتصادی آیسیک *"
@@ -83,9 +87,9 @@ export default function Step3() {
                     control={control}
                     label="هدف تسهیلات *"
                     options={fromPlaceOptions}
-                />
+                /> */}
             </WideForm>
-            <WideForm onSubmit={onSubmit} title='اطلاعات درخواست'>
+            {/* <WideForm onSubmit={onSubmit} title='اطلاعات درخواست'>
                 <FormSelect
                     name="fromPlace"
                     control={control}

@@ -26,3 +26,7 @@
     padding: 1rem;
     cursor: pointer;
 }
+
+.MuiPaper-root.MuiPaper-elevation {
+    direction: rtl;
+}

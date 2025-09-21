@@ -1,4 +1,6 @@
-export const fromPlaceOptions = [
+import type { FormSelectOption } from "../../components/FormSelect/FormSelect";
+
+export const fromPlaceOptions: FormSelectOption[] = [
     { value: 'D', label: 'عادی/موردی' },
     { value: 'E', label: 'از محل حد/ سقف' },
     { value: 'F', label: 'از محل گروهی/ تفاهم نامه‌ای' },
@@ -8,3 +10,7 @@ export const fromPlaceOptions = [
     { value: 'B', label: 'مصوبات خاص' },
     { value: 'C', label: 'از محل وجوه اداره شده' },
 ];
+
+export const mainEcoPart: FormSelectOption[] = [{ value: 'a', label: 'افراد حقیقی' },
+{ value: 'b', label: 'کشاورزی' },
+{ value: 'c', label: 'صنعتی/پیمانکاری/ساختمان' }];
